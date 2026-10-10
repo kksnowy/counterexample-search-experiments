@@ -1,4 +1,5 @@
 from pathlib import Path
+from datetime import datetime
 import vehicle_lang as vcl
 import multiprocessing
 import time
@@ -40,7 +41,8 @@ if __name__ == "__main__":
 	else:
 		result = queue.get()
 
-	results_filename = f"results/verification/mnist-{EPSILON}.txt"
+	timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+	results_filename = f"results/verification/mnist_verify_{EPSILON}_{timestamp}.txt"
 	with open(results_filename, "w") as file:
 		file.write("Output: " + str(result) + "\n")
-		file.write("Time :" + str(end - start))
+		file.write("Time: " + str(end - start))

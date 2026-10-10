@@ -53,7 +53,7 @@ spec_path = "acasXu.vcl"
 def write_search_result(property, search_result, model, search_time):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
-    results_filename = f"results/{property}_{timestamp}.csv"
+    results_filename = f"results/search/acasXu_search_{property}_{timestamp}.csv"
 
     with open(results_filename, "w", newline="") as results_file:
         writer = csv.writer(results_file)

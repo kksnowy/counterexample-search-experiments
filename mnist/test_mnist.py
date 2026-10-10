@@ -53,7 +53,7 @@ def write_search_result(
 ) -> None:
     
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    results_filename = f"results/search/mnist_search_{timestamp}.csv"
+    results_filename = f"results/search/mnist_search_{epsilon}_{timestamp}.csv"
 
     with open(results_filename, "w", newline="") as results_file:
         writer = csv.writer(results_file)
