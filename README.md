@@ -10,7 +10,7 @@ Create a virtual environment using Python 3.10 and install the dependencies list
 The code for producing counter-examples for each specification using Vehicle is available as a Pytest test file.
 e.g. `test_acasXu_search.py`. Each test file creates or loads the relevant neural network, calls the newly implemented
 search function, and times how long it takes to find a counter-example. Each also checks that generated counter-examples 
-violate the corresponding property, then writes the result to a time-stamped CSV file stored in the specification's
+violate the corresponding property, then writes the result to a time-stamped .csv file stored in the specification's
 `results` subdirectory.
 
 These test files were run within the Vehicle codebase to obtain the results in the thesis. However, since the counter-example 
@@ -33,7 +33,7 @@ in the scripts suffixed with "_verify" e.g. `acasXu_verify.py`. These can be exe
 the command `python acasXu_verify.py`. 
 
 To find a counter-example for a specific value of epsilon for MNIST, or a specific property for ACAS Xu, the variables 
-`EPSILON` and `PROPERTY` need to be modified in the corresponding file. The result is written to a time-stamped CSV file
+`EPSILON` and `PROPERTY` need to be modified in the corresponding file. The result is written to a time-stamped .txt file
 stored in the specification's `results` subdirectory.
 
 ## Neural networks used
@@ -43,7 +43,7 @@ Neural networks used for the synthetic specifications are created within its Pyt
 Pre-trained neural networks used for the MNIST and ACAS Xu specifications are available in the `models` directory which has 
 `onnx` and `pytorch` subdirectories containing the following files:
 
-- `onnx`/
+- `onnx/`
   - `acasXu_1_7.onnx` - one of the 45 neural networks which make up the ACAS Xu system. This file was obtained from the
   		`examples/acasXu` directory within Vehicle's codebase, but was originally from [here](https://github.com/NeuralNetworkVerification/Marabou/tree/master/resources/onnx/acasxu).
   - `mnist-classifier.onnx` - an MNIST classifier network obtained from the `examples/mnist-robustness` directory within Vehicle's 
