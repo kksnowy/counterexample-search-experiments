@@ -2,7 +2,7 @@ from datetime import datetime
 from math import pi
 
 import torch
-import torch.nn
+import torch.nn as nn
 import csv
 import time
 
@@ -29,7 +29,7 @@ maximum_input_values = [60261.0, pi, pi, 1200.0, 1200.0]
 mean_scaling_values = [19791.091, 0.0, 0.0, 650.0, 600.0]
 
 # Network wrapper to match the specification's input and output dimensions
-class ACASXu(torch.nn.Module):
+class ACASXu(nn.Module):
     def __init__(self, model):
         super().__init__()
         self.model = model

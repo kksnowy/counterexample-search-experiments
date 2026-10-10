@@ -89,7 +89,7 @@ def write_search_result(
                 None,
                 None,
                 None,
-                label_after_perturbation,
+                label_before_perturbation,
                 None,
                 search_time
             ])
@@ -111,7 +111,7 @@ def robustness_violated(epsilon, perturbation, perturbed_image, output, training
     
 			
 def test_pytorch_search_robust_single_image() -> None:
-    epsilon = 0.05 # Replace with desired value of epsilon
+    epsilon = 0.005 # Replace with desired value of epsilon
 
     counterexample_found = False
     search_results = None

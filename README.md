@@ -53,3 +53,10 @@ Pre-trained neural networks used for the MNIST and ACAS Xu specifications are av
   - `mnist-classifier.pth` - the network in `mnist-classifier.onnx` also converted into Pytorch.
 
 The onnx networks were used to find counter-examples using Marabou, while their Pytorch versions were used for gradient-based counter-example search in Vehicle.
+
+## Other resources used
+
+The images and labels used for the MNIST experiments are available as `t2-images.idx` and `t2-labels.idx` respectively 
+in the `mnist` directory. The first image and label pair are for the digit "7", while the second pair are for the digit "2".
+These files were obtained from the `examples/mnist-robustness` directory within the Vehicle codebase, but their original source is
+[here](https://huggingface.co/datasets/ylecun/mnist).

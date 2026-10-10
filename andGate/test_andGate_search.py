@@ -104,7 +104,7 @@ def test_pytorch_search_andGate() -> None:
                 output = model(inputs)
 
                 # Check that the counter-example actually violates the andGateCorrect property
-                assert (0 <= x1 <= 1) and (0 <= x2 <= 2)
+                assert (0 <= x1 <= 1) and (0 <= x2 <= 1)
                 assert (
                     (x1 >= 0.5 and x2 >= 0.5 and not output >= 0.5)
                     or (x1 >= 0.5 and x2 <= 0.5 and not output <= 0.5)

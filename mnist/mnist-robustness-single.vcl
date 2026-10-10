@@ -52,40 +52,16 @@ robustAround image label = forall perturbation .
     advises perturbedImage label
 
 --------------------------------------------------------------------------------
--- Robustness with respect to a dataset
+-- Robustness around the first image and label in a set of two images and labels
+-- Adapted from the mnist-robustness.vcl specification available in the 
+-- examples/mnist-robustness directory within the Vehicle codebase
 
--- We only really care about the network being robust on the set of images it
--- will encounter. Indeed it is much more challenging to expect the network
--- to be robust around all possible images. After all most images will be just
--- be random noise.
-
--- Unfortunately we can't characterise the set of "reasonable" input images.
--- Instead we approximate it using the training dataset, and ask that the
--- network is robust around images in the training dataset.
-
--- We first specify parameter `n` the size of the training dataset. Unlike
--- the earlier parameter `epsilon`, we set the `infer` option of the
--- parameter `n` to 'True'. This means that it does not need to be provided
---  manually but instead will be automatically inferred by the compiler.
--- In this case it will be inferred from the training datasets.
-
--- We next declare two datasets, the training images and the corresponding
--- training labels. Note that we use the previously declared parameter `n`
--- to enforce that they are the same size.
 @dataset
 trainingImages : Vector Image 2
 
 @dataset
 trainingLabels : Vector Label 2
 
--- We then say that the network is robust if it is robust around every pair
--- of input images and output labels. Note the use of the `foreach`
--- keyword when quantifying over the index `i` in the dataset. Whereas `forall`
--- would return a single `Bool`, `foreach` constructs a `Tensor` of booleans,
--- ensuring that Vehicle will report on the verification status of each image in
--- the dataset separately. If `forall` was omitted, Vehicle would only
--- report if the network was robust around *every* image in the dataset, a
--- state of affairs which is unlikely to be true.
 @property
 robustSingleImage : Bool
 robustSingleImage = robustAround (trainingImages ! 0) (trainingLabels ! 0)
