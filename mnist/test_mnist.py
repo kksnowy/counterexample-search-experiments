@@ -53,7 +53,7 @@ def write_search_result(
 ) -> None:
     
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    results_filename = f"results/mnist_{timestamp}.csv"
+    results_filename = f"results/search/mnist_search_{timestamp}.csv"
 
     with open(results_filename, "w", newline="") as results_file:
         writer = csv.writer(results_file)
@@ -110,7 +110,7 @@ def robustness_violated(epsilon, perturbation, perturbed_image, output, training
     return ((bounded_by_epsilon and valid_image) and not advises_training_label)
     
 			
-def test_pytorch_search_robust_first_image() -> None:
+def test_pytorch_search_robust_single_image() -> None:
     epsilon = 0.05 # Replace with desired value of epsilon
 
     counterexample_found = False

@@ -1,0 +1,46 @@
+from pathlib import Path
+import vehicle_lang as vcl
+import multiprocessing
+import time
+
+ONNX_MODELS_DIR = Path(__file__).parent.parent / "models" / "onnx"
+
+EPSILON = 0.005 # Replace with desired value of epsilon
+
+def verify():
+	result = vcl.verify(
+		specification = "mnist-robustness-single.vcl",
+		networks={"classifier": ONNX_MODELS_DIR / "mnist-classifier.onnx"},
+		parameters={"epsilon": EPSILON},
+		datasets={"trainingImages": "t2-images.idx", 
+		          "trainingLabels": "t2-labels.idx"},
+		solver="Marabou",
+		properties=["robustSingleImage"]
+	)
+	return result
+
+def run_verify(queue):
+	result = verify()
+	queue.put(result)
+
+if __name__ == "__main__":
+	queue = multiprocessing.Queue()
+
+	process = multiprocessing.Process(target=run_verify, args=(queue,))
+
+	start = time.perf_counter()
+	process.start()
+	process.join(timeout=60 * 60)
+	end = time.perf_counter()
+
+	if process.is_alive():
+		process.terminate()
+		process.join()
+		result = "TIMEOUT"
+	else:
+		result = queue.get()
+
+	results_filename = f"results/verification/mnist-{EPSILON}.txt"
+	with open(results_filename, "w") as file:
+		file.write("Output: " + str(result) + "\n")
+		file.write("Time :" + str(end - start))
