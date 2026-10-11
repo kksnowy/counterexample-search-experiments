@@ -2,8 +2,7 @@
 
 ## Setup
 
-Experiments for each specification are in separate directories.
-Create a virtual environment using Python 3.10 and install the dependencies listed in `requirements.txt`.
+The experiment code and materials for each specification are in separate directories. Create a virtual environment using Python 3.10 and install the dependencies listed in `requirements.txt`.
 
 ## Gradient-based counter-example search
 
@@ -32,7 +31,7 @@ The code used to measure the times taken by Marabou to find counter-examples for
 in the scripts suffixed with "_verify" e.g. `acasXu_verify.py`. These can be executed here to reproduce the times e.g. via
 the command `python acasXu_verify.py`. 
 
-To find a counter-example for a specific value of epsilon for MNIST, or a specific property for ACAS Xu, the variables 
+To measure the time for a specific value of epsilon for MNIST, or a specific property for ACAS Xu, the variables 
 `EPSILON` and `PROPERTY` need to be modified in the corresponding file. The result is written to a time-stamped .txt file
 stored in the specification's `results` subdirectory.
 
