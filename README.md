@@ -14,9 +14,9 @@ violate the corresponding property, then writes the result to a time-stamped .cs
 `results` subdirectory.
 
 These test files were run within the Vehicle codebase to obtain the results in the thesis. However, since the counter-example 
-search feature is not yet available in the latest version (v0.28.0) of the official Vehicle Python package (pending the next 
+search feature is not yet available in the latest version (v0.28.0) of the published Vehicle Python package (pending the next 
 version release), these test files cannot be executed here to reproduce the results with this version of Vehicle listed in 
-`requirements.txt`. However, the test files are still made available to demonstrate how these experiments were performed.
+`requirements.txt`. However, the test files are still made available here for the reader to inspect.
 
 Once the next version of the Vehicle package has been released, upgrade to the newer version using
 
@@ -59,4 +59,4 @@ The onnx networks were used to find counter-examples using Marabou, while their 
 The images and labels used for the MNIST experiments are available as `t2-images.idx` and `t2-labels.idx` respectively 
 in the `mnist` directory. The first image and label pair are for the digit "7", while the second pair are for the digit "2".
 These files were obtained from the `examples/mnist-robustness` directory within the Vehicle codebase, but their original source is
-[here](https://huggingface.co/datasets/ylecun/mnist).
+[here](http://yann.lecun.com/exdb/mnist).
